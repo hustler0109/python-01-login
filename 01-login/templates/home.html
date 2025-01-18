@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Girl Up Coders - Auth Portal</title>
+  <style>
+    /* Global Styles */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9fc;
+      color: #333;
+      text-align: center;
+    }
+
+    header {
+      background-color: #ff6ec7;
+      color: white;
+      padding: 1.5rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    header p {
+      margin: 0.5rem 0 0;
+      font-size: 1rem;
+      font-style: italic;
+    }
+
+    .container {
+      margin: 2rem auto;
+      max-width: 700px;
+      padding: 2rem;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    a {
+      text-decoration: none;
+      color: white;
+      padding: 0.7rem 1.5rem;
+      background-color: #F4C2C2;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    a:hover {
+      background-color: #F4C2C2;
+    }
+
+    .userinfo {
+      margin-top: 1.5rem;
+      background: #f0f4fa;
+      padding: 1.5rem;
+      border-radius: 8px;
+      text-align: left;
+      overflow: auto;
+      font-size: 0.9rem;
+    }
+
+    .resources {
+      margin-top: 2rem;
+      text-align: left;
+    }
+
+    .resources h3 {
+      color: #ff6ec7;
+      font-size: 1.4rem;
+    }
+
+    .resources ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .resources ul li {
+      margin: 0.5rem 0;
+      font-size: 1rem;
+    }
+
+    .resources ul li a {
+      background-color: #F4C2C2;
+      color: white;
+      text-decoration: underline;
+    }
+
+    footer {
+      margin-top: 2rem;
+      background-color: #f9f9fc;
+      color: #666;
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Welcome to Girl Up Coders</h1>
+    <p>Empowering women in technology</p>
+  </header>
+  <div class="container">
+    {% if session %}
+    <h2>Welcome, {{ session.userinfo.name }}!</h2>
+    <p>
+      <a href="/logout" id="qsLogoutBtn">Logout</a>
+    </p>
+    <div class="userinfo">
+      <h3>Your Profile Information</h3>
+      <pre>{{ pretty }}</pre>
+    </div>
+    <div class="resources">
+      <h3>Explore Resources:</h3>
+      <ul>
+        <li><a href="https://girlupcoders.com/courses" target="_blank">Tech Courses</a></li>
+        <li><a href="https://girlupcoders.com/events" target="_blank">Upcoming Events</a></li>
+        <li><a href="https://girlupcoders.com/mentorship" target="_blank">Join Mentorship</a></li>
+        <li><a href="https://girlupcoders.com/community" target="_blank">Community Forums</a></li>
+      </ul>
+    </div>
+    {% else %}
+    <h2>Welcome, Guest!</h2>
+    <p>
+      <a href="/login" id="qsLoginBtn">Login</a>
+    </p>
+    <p>Join our community of women in tech. Together, we code, learn, and grow!</p>
+    {% endif %}
+  </div>
+  <footer>
+    © 2024 Girl Up Coders. All rights reserved. | <a href="https://girlupcoders.com">Visit Our Website</a>
+  </footer>
+</body>
+</html>
